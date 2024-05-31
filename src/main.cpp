@@ -28,7 +28,6 @@ int main(int argc, char* argv[])
 		}
 		
 		// update
-
 		if((mushroom.getPosition().x + (size.x /2) > window.getSize().x && increment.x > 0) || (mushroom.getPosition().x - (size.x/2) < 0 && increment.x < 0))
 		{
 			// Reverse the X axis
