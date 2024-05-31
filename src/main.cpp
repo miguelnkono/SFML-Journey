@@ -6,7 +6,7 @@ int main(int argc, char* argv[])
 	while (!game.GetWindow()->isDone())
 	{
 		// game loop
-		game.HandleInput();
+		//game.HandleInput();
 		game.Update();
 		game.Render();
 	}

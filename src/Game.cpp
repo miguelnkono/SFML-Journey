@@ -4,9 +4,9 @@ Game::Game(/* args */):
     m_window("Chapter 2", sf::Vector2u(800, 600))
 {
     // setting up the class memeber
-    m_MushroomTexture.loadFromFile("../images/mushroom.jpeg");
+    m_MushroomTexture.loadFromFile("/home/gost/Bureau/SFML/Shape/images/mushroom1.jpeg");
     m_Mushroom.setTexture(m_MushroomTexture);
-    m_increment = sf::Vector2i(4, 4);
+    m_increment = sf::Vector2i(1, 1);
 }
 
 Game::~Game()
@@ -22,16 +22,16 @@ void Game::Update()
 void Game::MoveMushroom()
 {
     sf::Vector2u l_windSize = m_window.GetWindowSize();
-    sf::Vector2u l_textSIze = m_MushroomTexture.getSize();
+    sf::Vector2u l_textSize = m_MushroomTexture.getSize();
 
-    if((m_Mushroom.getPosition().x > l_windSize.x - l_textSIze.x && m_increment.x > 0) || (m_Mushroom.getPosition().x < 0 && m_increment.x < 0))
+    if((m_Mushroom.getPosition().x > l_windSize.x - l_textSize.x&& m_increment.x > 0) || (m_Mushroom.getPosition().x < 0 && m_increment.x < 0))
     {
-        m_increment.x -= m_increment.x;
+        m_increment.x = -m_increment.x;
     }
 
-    if((m_Mushroom.getPosition().y > l_windSize.y - l_textSIze.x && m_increment.y > 0) || (m_Mushroom.getPosition().y < 0 && m_increment.y < 0))
+    if((m_Mushroom.getPosition().y > l_windSize.y - l_textSize.y&& m_increment.y > 0) || (m_Mushroom.getPosition().y < 0 && m_increment.y < 0))
     {
-        m_increment.y -= m_increment.y;
+        m_increment.y = -m_increment.y;
     }
 
     m_Mushroom.setPosition(
@@ -52,5 +52,5 @@ void Game::HandleInput()
 }
 Window* Game::GetWindow()
 {
-    m_window.isDone();
+    return &(m_window);
 }
