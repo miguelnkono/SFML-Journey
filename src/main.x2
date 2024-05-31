@@ -1,0 +1,62 @@
+#include <SFML/Graphics.hpp>
+#include <vector>
+
+using namespace std;
+using namespace sf;
+
+
+int main()
+{
+	RenderWindow window;
+	window.create(VideoMode(800, 450), "Miguel learn");
+	window.setFramerateLimit(60);
+
+	// Rectangle
+	RectangleShape rect(Vector2f(100.f, 50.f));
+	rect.setPosition(350.f, 200.f);
+	rect.setFillColor(Color::Green);
+
+	// texture
+	Texture texture;
+	if(!texture.loadFromFile("solo.jpeg"))	exit(1);
+	Sprite sprite;
+	sprite.setTexture(texture);
+	sprite.setPosition(350.f, 200.f);
+	
+	while(window.isOpen())
+	{
+		Event event;
+		while(window.pollEvent(event))
+		{
+			if(event.type == Event::Closed)
+				window.close();
+			if(event.type == Event::KeyPressed && event.key.code == Keyboard::Escape)
+				window.close();
+		}
+
+		// update
+		if(Keyboard::isKeyPressed(Keyboard::Left))
+		{
+			rect.move(-3.f, 0.f);
+		}
+		if(Keyboard::isKeyPressed(Keyboard::Right))
+		{
+			rect.move(3.f, 0.f);
+		}
+		if(Keyboard::isKeyPressed(Keyboard::Up))
+		{
+			rect.move(0.f, -3.f);
+		}
+		if(Keyboard::isKeyPressed(Keyboard::Down))
+		{
+			rect.move(0.f, 3.f);
+		}
+
+		// drawing
+		window.clear(Color::Black);
+			window.draw(sprite);
+		window.display();
+	}
+
+	return 0;
+}
