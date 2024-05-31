@@ -1,0 +1,5 @@
+-> Designing a window class, with a main game class
+-> Code restruction and proper architecture
+-> The importance of a proper time management in a applications
+-> Using sf::Clock and sf::Time classes
+-> Fixed and variable time-steps
