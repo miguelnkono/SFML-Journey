@@ -26,6 +26,7 @@ void Window::Create()
 {
     sf::Uint32 /* unsign */ Style = (m_isFullScreen ? sf::Style::Fullscreen : sf::Style::Default);
     m_window.create({m_windowSize.x, m_windowSize.y, 32}, m_title, Style );
+    //m_window.setFramerateLimit(60);       // Using sf::RenderWindow::setFramerateLimit() to ensures the frame-rate
 }
 
 void Window::Destroy()
