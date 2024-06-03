@@ -7,6 +7,8 @@
     private:
         void MoveMushroom();
         Window m_window;
+        sf::Clock  m_clock;
+        sf::Time m_elapsted;
         
     public:
         Window* GetWindow();
@@ -15,6 +17,8 @@
         void HandleInput();
         void Update();
         void Render();
+        sf::Time GetElapsed();
+        void RestartClock();
         sf::Texture m_MushroomTexture;
         sf::Sprite m_Mushroom;
         sf::Vector2i m_increment;

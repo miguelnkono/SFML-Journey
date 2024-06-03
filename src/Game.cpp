@@ -6,7 +6,7 @@ Game::Game(/* args */):
     // setting up the class memeber
     m_MushroomTexture.loadFromFile("/home/gost/Bureau/SFML/Shape/images/mushroom1.jpeg");
     m_Mushroom.setTexture(m_MushroomTexture);
-    m_increment = sf::Vector2i(1, 1);
+    m_increment = sf::Vector2i(400, 400);
 }
 
 Game::~Game()
@@ -21,6 +21,7 @@ void Game::Update()
 
 void Game::MoveMushroom()
 {
+    float fElapsed = m_elapsted.asSeconds();
     sf::Vector2u l_windSize = m_window.GetWindowSize();
     sf::Vector2u l_textSize = m_MushroomTexture.getSize();
 
@@ -35,8 +36,8 @@ void Game::MoveMushroom()
     }
 
     m_Mushroom.setPosition(
-        m_Mushroom.getPosition().x + m_increment.x,
-        m_Mushroom.getPosition().y + m_increment.y
+        m_Mushroom.getPosition().x + m_increment.x * fElapsed,
+        m_Mushroom.getPosition().y + m_increment.y * fElapsed
     );
 }
 
@@ -53,4 +54,14 @@ void Game::HandleInput()
 Window* Game::GetWindow()
 {
     return &(m_window);
+}
+
+sf::Time Game::GetElapsed()
+{
+    return m_elapsted;
+}
+
+void Game::RestartClock()
+{
+    m_elapsted =  m_clock.restart();
 }
